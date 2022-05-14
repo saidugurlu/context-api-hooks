@@ -1,35 +1,31 @@
 import React, { Component } from "react";
-import Book from './Book'
-import './BookList.css';
+import Book from "./Book";
+import "./BookList.css";
+import BookContext from "../contexts/BookContext";
 
 class Booklist extends Component {
-    render() {
+  static contextType = BookContext;
+  render() {
+    const books = this.context;
 
-        
-
-        const bookList = this.props.books.map((book, i) => {
-            return <Book book={book}
-                key={i}
-            />
-        })
-
-        return (
-            <section className="page-section bg-light" id="portfolio">
-                <div className="container">
-                    <div className="text-center">
-                        <h2 className="section-heading text-uppercase">BookFolio</h2>
-                        <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                    </div>
-                    <div className="row">
-
-                        {bookList}
-
-                    </div>
-                </div>
-            </section>
-        )
-    }
-
+    return (
+      <section className="page-section bg-light" id="portfolio">
+        <div className="container">
+          <div className="text-center">
+            <h2 className="section-heading text-uppercase">Kitaplik</h2>
+            <h3 className="section-subheading text-muted">
+              Taktuka taktuka tutukaka kakakuklata.
+            </h3>
+          </div>
+          <div className="row">
+            {books.map((book, i) => {
+              return <Book book={book} key={i} />;
+            })}
+          </div>
+        </div>
+      </section>
+    );
+  }
 }
 
 export default Booklist;
