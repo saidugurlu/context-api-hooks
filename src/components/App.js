@@ -1,15 +1,17 @@
 import "../App.css";
 import React, { Component } from "react";
 import BookList from "./BookList";
-import BookContextProvider from '../contexts/BookContext'
+import BookContextProvider from "../contexts/BookContext";
+import ThemeContextProvider from "../contexts/ThemeContext";
 
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <ThemeContextProvider>
         <BookContextProvider>
-        <BookList /></BookContextProvider>
-      </div>
+          <BookList />
+        </BookContextProvider>
+      </ThemeContextProvider>
     );
   }
 }
